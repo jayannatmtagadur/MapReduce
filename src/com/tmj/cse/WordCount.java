@@ -22,7 +22,9 @@ public class WordCount {
 		job.setJarByClass(WordCount.class);
 		job.setMapperClass(WCMapper.class);
 		job.setReducerClass(WCReducer.class);
-		job.setCombinerClass(WCReducer.class);
+		job.setCombinerClass(WCReducer.class);   // Combiner class implementation
+		job.setNumReduceTasks(3);
+		job.setPartitionerClass(WCPartitioner.class);
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(IntWritable.class);
 		job.setOutputKeyClass(Text.class);
